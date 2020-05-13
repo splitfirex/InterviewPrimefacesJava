@@ -20,6 +20,10 @@ El proyecto no se ejecutará correctamente hasta que se corrigan problemas de in
 
 Una vez se haya ejecutado correctamente abrir un navegador en la ruta http://localhost:8080/inicio.xhtml para continuar con las 3 fases restantes.
 
+Se incluye el siguiente modelo de entidad relacion para una mejor identificación de las relaciones.
+
+<img src="img/modeloEntidadRelacion.png style="width:200px"/>
+
 El tiempo no es una limitante pero se incluye por cada fase un estimado de tiempo necesario para su completitud.
 
 Una vez finalizado las etapas realice un PULL REQUEST al repositorio donde se ha descargado el proyecto.
