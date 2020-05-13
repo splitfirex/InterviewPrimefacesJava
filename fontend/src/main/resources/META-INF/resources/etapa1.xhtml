@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+    <f:viewAction action="#{etapa1Controller.init}"/>
+</f:metadata>
+
+<h:head>
+    <title>Etapa 1</title>
+</h:head>
+
+<h:outputStylesheet>
+    .col1{
+        width: 150px;
+    }
+    .col2{
+        width: 800px;
+    }
+    .col2 input{
+        width: 100%;
+    }
+</h:outputStylesheet>
+
+<h:body>
+    <h:form id="etapa1-form">
+
+        <p:outputPanel>
+            <h1>Etapa 1</h1>
+            En esta seccion se deberan corregir las siguientes cuestiones:
+            <ul>
+                <li>La tabla no muestra correctamente el campo de fecha en el formato correcto dd/mm/yyyy </li>
+                <li>Al seleccionar un elemento de la tabla no se muestra el campo de precio</li>
+                <li>El boton de guardar no funciona correctamente </li>
+                <li>Cuando se guarde/actualize el producto debe refrescarse la tabla para observar los cambios</li>
+            </ul>
+            Una vez corregidas estas cuestiones continue a la siguiente etapa <p:link outcome="inicio.xhtml"> Volver</p:link>
+        </p:outputPanel>
+
+        <p:outputPanel styleClass="camposEdicion" style="margin: 20px">
+            <p:panelGrid columns="2" columnClasses="col1, col2">
+                Id producto<p:inputText value="#{etapa1Controller.productoSeleccionado.id}"></p:inputText>
+                Nombre producto<p:inputText value="#{etapa1Controller.productoSeleccionado.nombre}"></p:inputText>
+                Descripcion<p:inputText value="#{etapa1Controller.productoSeleccionado.descripcion}"></p:inputText>
+                precio<p:inputText></p:inputText>
+                Fecha baja<p:calendar value="#{etapa1Controller.productoSeleccionado.fechaBaja}" pattern="dd/mm/YYYY"></p:calendar>
+            </p:panelGrid>
+
+            <p:commandButton process="@this" action="#{etapa1Controller.nuevoProducto}" value="Nuevo producto" update="@(.camposEdicion)"></p:commandButton>
+            <p:commandButton process="@this" action="#{etapa1Controller.guardarProducto}" value="Guardar"></p:commandButton>
+
+        </p:outputPanel>
+
+        <p:dataTable value="#{etapa1Controller.productoList}"
+                     var="producto"
+                     rowKey="#{producto.id}"
+                     rows="10"
+                     selection="#{etapa1Controller.productoSeleccionado}"
+                     selectionMode="single"
+                     paginator="true"
+                     rowsPerPageTemplate="5,10,15"
+                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+        >
+            <p:ajax event="rowSelect" update="@(.camposEdicion)"/>
+
+            <p:column headerText="Id producto">
+                <h:outputText value="#{producto.id}"></h:outputText>
+            </p:column>
+            <p:column headerText="Nombre producto">
+                <h:outputText value="#{producto.nombre}"></h:outputText>
+            </p:column>
+            <p:column headerText="Descripcion">
+                <h:outputText value="#{producto.descripcion}"></h:outputText>
+            </p:column>
+            <p:column headerText="Precio">
+                <h:outputText value="#{producto.precio}"></h:outputText>
+            </p:column>
+            <p:column headerText="Fecha baja">
+                <h:outputText value="#{producto.fechaBaja}"></h:outputText>
+            </p:column>
+        </p:dataTable>
+
+    </h:form>
+</h:body>
+</html>

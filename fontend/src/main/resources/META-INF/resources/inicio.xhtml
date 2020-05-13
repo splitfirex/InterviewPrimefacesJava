@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+<h:head>
+    <title>PrimeFaces Hello World Example</title>
+</h:head>
+
+<h:body>
+    <h:form id="helloworld-form">
+
+        <p:panel>
+            <f:facet name="header">
+                Etapa 1
+            </f:facet>
+            El objetivo de esta fase es la identificacion y correcion de errores arrojados por la aplicacion.<br/>
+            Tiempo esperado aproximado de resolucion 10 min<br/>
+            <p:link outcome="etapa1.xhtml" value="Presionar este link para ir a la Etapa1"></p:link>
+        </p:panel>
+
+        <p:panel>
+            <f:facet name="header">
+                Etapa 2
+            </f:facet>
+            El objetivo de esta fase es la modificacion de codigo existente para cumplir con nuevos requisitos.<br/>
+            Tiempo esperado aproximado de resolucion 20 min<br/>
+            <p:link outcome="etapa2.xhtml" value="Presionar este link para ir a la Etapa2"></p:link>
+        </p:panel>
+
+        <p:panel>
+            <f:facet name="header">
+                Etapa 3
+            </f:facet>
+            El objetivo de esta fase es la creacion de codigo nuevo para cumplir requisitos del cliente.<br/>
+            Tiempo esperado aproximado de resolucion 30 min<br/>
+            <p:link outcome="etapa3.xhtml" value="Presionar este link para ir a la Etapa2"></p:link>
+        </p:panel>
+
+    </h:form>
+</h:body>
+</html>

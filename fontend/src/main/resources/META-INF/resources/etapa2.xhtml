@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+    <f:viewAction action="#{etapa2Controller.init}"/>
+</f:metadata>
+
+<h:head>
+    <title>Etapa 2</title>
+</h:head>
+
+<h:outputStylesheet>
+    .col1{
+        width: 150px;
+    }
+    .col2{
+        width: 800px;
+    }
+    .col2 input{
+        width: 100%;
+    }
+</h:outputStylesheet>
+
+<h:body>
+    <h:form id="etapa2-form">
+
+        <p:outputPanel>
+            <h1>Etapa 2</h1>
+            En esta seccion se solicita refactorizar el codigo para cumplir con los siguiente requisitos:
+            <ul>
+                <li>Actualmente el codigo que realiza la consulta de clientes contra la base de datos obtiene la lista completa de clientes, se requiere que las consultas a base de datos se realicen de manera paginada</li>
+                <li>El boton de guardar funciona, pero la persistencia no esta funcionando correctamente (Pruebe hacer un cambio y refrescar el navegador)</li>
+                <li>La columna de la tabla "SEXO" debe reflejar "Hombre" "Mujer" (Hombre = true, Mujer = false)</li>
+                <li>El campo de edicion sexo debe cambiarse por un radio button de "hombre" "Mujer" (Hombre = true, Mujer = false)</li>
+            </ul>
+            Una vez corregidas estas cuestiones continue a la siguiente etapa <p:link outcome="inicio.xhtml"> Volver</p:link>
+        </p:outputPanel>
+
+        <p:outputPanel styleClass="camposEdicion" style="margin: 20px">
+            <p:panelGrid columns="2" columnClasses="col1, col2">
+                id Cliente<p:inputText value="#{etapa2Controller.clienteSeleccionado.id}"></p:inputText>
+                Nombre<p:inputText value="#{etapa2Controller.clienteSeleccionado.nombre}"></p:inputText>
+                Apellido<p:inputText value="#{etapa2Controller.clienteSeleccionado.apellido}"></p:inputText>
+                Sexo<p:inputText  value="#{etapa2Controller.clienteSeleccionado.sexo}"></p:inputText>
+            </p:panelGrid>
+
+            <p:commandButton process="@this" action="#{etapa2Controller.nuevoCliente}" value="Nuevo producto" update="@(.camposEdicion)"></p:commandButton>
+            <p:commandButton process="@this @(.camposEdicion)" action="#{etapa2Controller.guardarCliente}" value="Guardar" update="@(.camposEdicion) @(.tablaCliente)"></p:commandButton>
+
+        </p:outputPanel>
+
+        <p:dataTable value="#{etapa2Controller.clienteList}"
+                     var="cliente" styleClass="tablaCliente"
+                     rowKey="#{cliente.id}"
+                     rows="10"
+                     selection="#{etapa2Controller.clienteSeleccionado}"
+                     selectionMode="single"
+                     paginator="true"
+                     rowsPerPageTemplate="5,10,15"
+                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+        >
+            <p:ajax event="rowSelect" update="@(.camposEdicion)"/>
+
+            <p:column headerText="Id cliente">
+                <h:outputText value="#{cliente.id}"></h:outputText>
+            </p:column>
+            <p:column headerText="nombre cliente">
+                <h:outputText value="#{cliente.nombre}"></h:outputText>
+            </p:column>
+            <p:column headerText="Apellido cliente">
+                <h:outputText value="#{cliente.apellido}"></h:outputText>
+            </p:column>
+            <p:column headerText="Sexo">
+                <h:outputText value="#{cliente.sexo}"></h:outputText>
+            </p:column>
+        </p:dataTable>
+
+    </h:form>
+</h:body>
+</html>

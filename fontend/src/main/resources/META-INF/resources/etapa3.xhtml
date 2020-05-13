@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+    <f:viewAction action="#{etapa2Controller.init}"/>
+</f:metadata>
+
+<h:head>
+    <title>Etapa 3</title>
+</h:head>
+
+<h:outputStylesheet>
+    .col1 {
+        width: 150px;
+    }
+
+    .col2 {
+        width: 800px;
+    }
+
+    .col2 input {
+        width: 100%;
+    }
+</h:outputStylesheet>
+
+<h:body>
+    <h:form id="etapa2-form">
+
+        <p:outputPanel>
+            <h1>Etapa 3</h1>
+            En esta seccion se solicita añadir nuevas funcionalidades a la aplicacion:
+            <ul>
+                <li>Se requiere que se muestren 3 tablas Clientes, Carrito compra y productos, en ese orden</li>
+                <li>Cada una de las tablas dependerá de la anterior, es decir que cuando presione un cliente de la tabla de clientes se actualizará la siguiente tabla de carritos mostando los carritos asociados al cliente</li>
+                <li>Al presionar sobre un elemento de la tabla de carritos se actualizará la tabla de productos asociados al carrito</li>
+                <li>Se incluye el controlador de la etapa3, sin embargo, debe implementar todos los metodos, servicios y DAOs que considere necesario</li>
+            </ul>
+            Una vez corregidas estas cuestiones puede realizar un pull request al repositorio de donde obtuvo el codigo para su evaluación<p:link
+                outcome="inicio.xhtml"> Volver</p:link>
+        </p:outputPanel>
+
+        <h1>Tabla de clientes</h1>
+        <p:dataTable>
+            <p:column headerText="Id cliente">
+            </p:column>
+            <p:column headerText="nombre cliente">
+            </p:column>
+            <p:column headerText="Apellido cliente">
+            </p:column>
+            <p:column headerText="Sexo">
+            </p:column>
+        </p:dataTable>
+
+        <h1>Tabla de carritos</h1>
+        <p:dataTable>
+            <p:column headerText="Id Carrito">
+            </p:column>
+        </p:dataTable>
+
+        <h1>Tabla de productos</h1>
+        <p:dataTable
+        >
+
+            <p:column headerText="Id producto">
+            </p:column>
+            <p:column headerText="Nombre producto">
+            </p:column>
+            <p:column headerText="Descripcion">
+            </p:column>
+            <p:column headerText="Precio">
+            </p:column>
+            <p:column headerText="Fecha baja">
+            </p:column>
+        </p:dataTable>
+
+    </h:form>
+</h:body>
+</html>
