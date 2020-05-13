@@ -22,7 +22,7 @@ Una vez se haya ejecutado correctamente abrir un navegador en la ruta http://loc
 
 Se incluye el siguiente modelo de entidad relacion para una mejor identificación de las relaciones.
 
-<img src="img/modeloEntidadRelacion.png style="width:200px"/>
+<img src="img/modeloEntidadRelacion.png width="200px" >
 
 El tiempo no es una limitante pero se incluye por cada fase un estimado de tiempo necesario para su completitud.
 
